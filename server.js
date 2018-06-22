@@ -33,7 +33,7 @@ app.get('/search/:id', function(request, response, next){
                 database: data
             });
 
-            con.connect(function(err) {
+            con.connect(function(err){
                         //console.log(request.url);
 
                         var sql = mysql.format("SELECT * FROM users WHERE username LIKE " + "'" + path + "%" + "'");
