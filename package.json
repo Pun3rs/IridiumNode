@@ -1,0 +1,16 @@
+{
+  "name": "modules",
+  "version": "1.0.0",
+  "description": "iridium nodejs server",
+  "main": "fetch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "modules",
+    "npm"
+  ],
+  "author": "Powerhouse",
+  "license": "UNLICENSED"
+}
