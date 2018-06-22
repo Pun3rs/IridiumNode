@@ -9,8 +9,10 @@ var host = "den1.mysql6.gear.host",
 var express = require("express");
 var app = express();
 
+var port = process.env.PORT || 8000;
 
-app.get('/', (request, response) {
+
+app.get('/', (request, response, next) {
 
 var path = (url.parse(request.url).pathname).replace('/', '');
 
@@ -49,4 +51,7 @@ con.connect(function (err)
       response.end();
 )}
 
-app.listen(app.get('port'));
+app.listen(app.get('port'), function()
+    {
+        console.log("outputtig at" + port);
+    });
