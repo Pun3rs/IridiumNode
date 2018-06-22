@@ -26,7 +26,7 @@ app.get('/search/:id', function(request, response, next){
             var final = "";
             var results;
 
-            var con = mysql.createConnection({
+            var con = mysql.createConnection( {
                 host: host,
                 user: user,
                 password: pass,
