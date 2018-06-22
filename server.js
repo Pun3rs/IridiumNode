@@ -6,55 +6,47 @@ var host = "den1.mysql6.gear.host",
     pass = "admin!",
     user = "delicion",
     data = user;
+var express = require("express");
+var app = express();
 
 
-http.createServer(function(request, response){
-    var path = (url.parse(request.url).pathname).replace('/', '');
+app.get('/', (request, response) {
+
+var path = (url.parse(request.url).pathname).replace('/', '');
 
 
-    if(request.url != "/favicon.ico")
-    {
-    //console.log(dataPack);
+if(request.url != "/favicon.ico")
+{
+//console.log(dataPack);
 
 
-    var final = "";
-    var results;
+var final = "";
+var results;
 
-    var con = mysql.createConnection(
+var con = mysql.createConnection(
+  {
+    host : host,
+    user : user,
+    password : pass,
+    database : data
+  });
+
+con.connect(function (err)
+  {
+    //console.log(request.url);
+
+    var sql = mysql.format("SELECT * FROM users WHERE username LIKE " + "'" + path+ "%" + "'");
+    //console.log(sql);
+    con.query(sql , function (err, result, fields) {
+      results = result;
+
+      for(i = 0; i < results.length; i++)
       {
-        host : host,
-        user : user,
-        password : pass,
-        database : data
-      });
+        final = final+(results[i].username) + "\n";
+      }
 
-    con.connect(function (err)
-      {
-        //console.log(request.url);
+      response.write(final);
+      response.end();
+)}
 
-        var sql = mysql.format("SELECT * FROM users WHERE username LIKE " + "'" + path+ "%" + "'");
-        //console.log(sql);
-        con.query(sql , function (err, result, fields) {
-          results = result;
-
-          for(i = 0; i < results.length; i++)
-          {
-            final = final+(results[i].username) + "\n";
-          }
-
-          response.write(final);
-          response.end();
-
-        });
-      });
-
-    }
-
-    //console.log(dataPack);
-
-
-
-
-    //request.end();
-
-}).listen(3000);
+app.listen(app.get('port'));
