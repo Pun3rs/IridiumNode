@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-      "express": "",
+      "express": "3.0.x",
       "mysql": ""
   },
   "keywords": [
