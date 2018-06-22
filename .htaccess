@@ -1,4 +1,8 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+<<<<<<< HEAD
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
+=======
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+>>>>>>> 1cad4a1d12566420cb821771e87ca112f0f1d3e8

@@ -2,7 +2,10 @@
   "name": "modules",
   "version": "1.0.0",
   "description": "iridium nodejs server",
+<<<<<<< HEAD
   "main": "fetch.js",
+=======
+>>>>>>> 1cad4a1d12566420cb821771e87ca112f0f1d3e8
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
