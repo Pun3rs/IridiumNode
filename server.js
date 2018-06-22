@@ -12,46 +12,44 @@ var app = express();
 var port = process.env.PORT || 8000;
 
 
-app.get('/', (request, response, next) {
+app.get('/search/:id', function(request, response, next){
 
-var path = (url.parse(request.url).pathname).replace('/', '');
+        var path = request.params.id;
 
-
-if(request.url != "/favicon.ico")
-{
-//console.log(dataPack);
+        console.log(path);
 
 
-var final = "";
-var results;
+        if (request.url != "/favicon.ico") {
+            //console.log(dataPack);
 
-var con = mysql.createConnection(
-  {
-    host : host,
-    user : user,
-    password : pass,
-    database : data
-  });
 
-con.connect(function (err)
-  {
-    //console.log(request.url);
+            var final = "";
+            var results;
 
-    var sql = mysql.format("SELECT * FROM users WHERE username LIKE " + "'" + path+ "%" + "'");
-    //console.log(sql);
-    con.query(sql , function (err, result, fields) {
-      results = result;
+            var con = mysql.createConnection({
+                host: host,
+                user: user,
+                password: pass,
+                database: data
+            });
 
-      for(i = 0; i < results.length; i++)
-      {
-        final = final+(results[i].username) + "\n";
-      }
+            con.connect(function(err) {
+                        //console.log(request.url);
 
-      response.write(final);
-      response.end();
-)}
+                        var sql = mysql.format("SELECT * FROM users WHERE username LIKE " + "'" + path + "%" + "'");
+                        //console.log(sql);
+                        con.query(sql, function(err, result, fields) {
+                                results = result;
 
-app.listen(app.get('port'), function()
-    {
-        console.log("outputtig at" + port);
-    });
+                                for (i = 0; i < results.length; i++) {
+                                    final = final + (results[i].username) + "\n";
+                                }
+
+                                response.write(final);
+                                response.end();
+                            });
+                        });
+            }
+      });
+
+      app.listen(port);
