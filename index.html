@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Iridium - Start page</title>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div id="main_bar" class="topnav">
+      <a href="index.html" class = "active">Find</a>
+        <a href = "#explore" class = "explore">Explore</a>
+        <a href = "#account" class = "account">Account</a>
+    </div>
+  
+    
+<div id='container'>  
+  <div class='cell'><input type='search' id = "searchText" placeholder='Search'></div>
+    <div class='cell'><button class='sax' onClick = "search()">Go!</button></div>
+</div>
+      
+    <script>
+      function search()
+        {
+            window.open(window.location.hostname + document.getElementById("searchText").value);
+        }
+    </script>
+     
+  </body>
+</html>
